@@ -1,7 +1,8 @@
 const faqs = [
   {
     question: "Who can apply?",
-    answer: "Any Harvard student interested in music, media, or music-business collaboration.",
+    answer:
+      "Students at Harvard and Berklee, plus members from Babson, Northeastern, and Emerson interested in music, media, or music-business collaboration.",
   },
   {
     question: "Do I need prior experience?",
@@ -22,9 +23,9 @@ export default function StudentsFaqsPage() {
         <p className="mix-kicker mb-3">Students</p>
         <h1 className="mix-page-title">FAQs</h1>
 
-        <div className="mt-7 grid gap-3">
+        <div className="mt-8 grid gap-7">
           {faqs.map((faq, index) => (
-            <article key={faq.question} className={`mix-surface p-5 sm:p-6 ${revealByIndex[index] ?? "reveal"}`}>
+            <article key={faq.question} className={revealByIndex[index] ?? "reveal"}>
               <h2 className="mix-card-title">{faq.question}</h2>
               <p className="mix-copy mt-3 mb-0">{faq.answer}</p>
             </article>

@@ -10,9 +10,9 @@ import "@fontsource/montserrat/700.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "The Mix | Harvard University",
+  title: "The Mix | Harvard + Berklee",
   description:
-    "The Mix is a music networking and business organization at Harvard University.",
+    "The Mix is a music networking and business organization based at Harvard and Berklee, with members from Babson, Northeastern, and Emerson.",
 };
 
 export default function RootLayout({
