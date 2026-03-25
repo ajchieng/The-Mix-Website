@@ -18,7 +18,7 @@ const studentsMenu = [
 
 const aboutMenu = [
   { label: "Our Team", href: "/about/team" },
-  { label: "Our Founder", href: "/about/founder" },
+  { label: "Our Founders", href: "/about/founder" },
   { label: "Our Mission", href: "/about/mission" },
 ];
 
@@ -49,73 +49,91 @@ export function NavBar() {
 
   return (
     <header className="mix-nav sticky top-0 z-50">
-      <div className="mx-auto flex h-full w-full max-w-6xl items-center justify-between gap-3 px-3 sm:px-6 lg:px-8">
-        <Link href="/" className="mix-nav-brand">
-          Home
+      <div className="mix-nav-inner mx-auto w-full max-w-[90rem] px-4 sm:px-7 lg:px-10">
+        <div className="mix-nav-balance" aria-hidden="true" />
+
+        <nav className="mix-nav-links mix-nav-links-left" aria-label="Primary left">
+          <Link href="/" className="mix-nav-link">
+            Home
+          </Link>
+
+          <div className="mix-nav-dropdown">
+            <button type="button" className="mix-nav-link mix-nav-link-trigger" aria-haspopup="menu">
+              The Hub
+            </button>
+            <div className="mix-nav-menu" role="menu" aria-label="Events">
+              {eventsMenu.map((item) => (
+                <Link key={item.href} href={item.href} className="mix-nav-menu-link" role="menuitem">
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="mix-nav-dropdown">
+            <button type="button" className="mix-nav-link mix-nav-link-trigger" aria-haspopup="menu">
+              Join The Mix
+            </button>
+            <div className="mix-nav-menu" role="menu" aria-label="Students">
+              {studentsMenu.map((item) => (
+                <Link key={item.href} href={item.href} className="mix-nav-menu-link" role="menuitem">
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </nav>
+
+        <Link href="/" className="mix-nav-logo-link" aria-label="Go to the homepage">
+          <Image
+            src="/homepageimages/mix_logo_white.svg"
+            alt="The Mix"
+            width={56}
+            height={56}
+            className="mix-nav-logo-image"
+          />
         </Link>
-        <div className="mix-nav-actions">
-          <nav className="mix-nav-links" aria-label="Primary">
-            <div className="mix-nav-dropdown">
-              <button type="button" className="mix-nav-link mix-nav-link-trigger" aria-haspopup="menu">
-                Events
-              </button>
-              <div className="mix-nav-menu" role="menu" aria-label="Events">
-                {eventsMenu.map((item) => (
-                  <Link key={item.href} href={item.href} className="mix-nav-menu-link" role="menuitem">
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
+
+        <nav className="mix-nav-links mix-nav-links-right" aria-label="Primary right">
+          <div className="mix-nav-dropdown">
+            <button type="button" className="mix-nav-link mix-nav-link-trigger" aria-haspopup="menu">
+              The Team
+            </button>
+            <div className="mix-nav-menu" role="menu" aria-label="About Us">
+              {aboutMenu.map((item) => (
+                <Link key={item.href} href={item.href} className="mix-nav-menu-link" role="menuitem">
+                  {item.label}
+                </Link>
+              ))}
             </div>
+          </div>
 
-            <div className="mix-nav-dropdown">
-              <button type="button" className="mix-nav-link mix-nav-link-trigger" aria-haspopup="menu">
-                Students
-              </button>
-              <div className="mix-nav-menu" role="menu" aria-label="Students">
-                {studentsMenu.map((item) => (
-                  <Link key={item.href} href={item.href} className="mix-nav-menu-link" role="menuitem">
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
+          <Link href="/contact" className="mix-nav-link">
+            Connect
+          </Link>
 
-            <div className="mix-nav-dropdown">
-              <button type="button" className="mix-nav-link mix-nav-link-trigger" aria-haspopup="menu">
-                About Us
-              </button>
-              <div className="mix-nav-menu" role="menu" aria-label="About Us">
-                {aboutMenu.map((item) => (
-                  <Link key={item.href} href={item.href} className="mix-nav-menu-link" role="menuitem">
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
+          <Link href="/press" className="mix-nav-link">
+            Press
+          </Link>
+        </nav>
 
-            <Link href="/contact" className="mix-nav-link">
-              Contact
-            </Link>
-
-            <a
-              href="https://www.instagram.com/themixnetwork_/reels/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mix-nav-social"
-              aria-label="Instagram"
-            >
-              <Image
-                src="/homepageimages/instagram-logo.svg"
-                alt=""
-                aria-hidden="true"
-                width={18}
-                height={18}
-                className="mix-nav-social-icon"
-              />
-            </a>
-          </nav>
-
+        <div className="mix-nav-utilities">
+          <a
+            href="https://www.instagram.com/themixnetwork_/reels/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mix-nav-social mix-nav-social-desktop"
+            aria-label="Instagram"
+          >
+            <Image
+              src="/homepageimages/instagram-logo.svg"
+              alt=""
+              aria-hidden="true"
+              width={18}
+              height={18}
+              className="mix-nav-social-icon"
+            />
+          </a>
           <button
             type="button"
             className={`mix-nav-mobile-toggle ${isMobileOpen ? "is-open" : ""}`}
@@ -134,7 +152,17 @@ export function NavBar() {
       <div id="mix-mobile-nav" className={`mix-nav-mobile-panel ${isMobileOpen ? "is-open" : ""}`}>
         <nav className="mix-nav-mobile-links" aria-label="Mobile Primary">
           <div className="mix-nav-mobile-group">
-            <p className="mix-nav-mobile-heading">Events</p>
+            <Link
+              href="/"
+              className="mix-nav-mobile-link mix-nav-mobile-link-strong"
+              onClick={() => setIsMobileOpen(false)}
+            >
+              Home
+            </Link>
+          </div>
+
+          <div className="mix-nav-mobile-group">
+            <p className="mix-nav-mobile-heading">The Hub</p>
             {eventsMenu.map((item) => (
               <Link
                 key={`mobile-${item.href}`}
@@ -148,7 +176,7 @@ export function NavBar() {
           </div>
 
           <div className="mix-nav-mobile-group">
-            <p className="mix-nav-mobile-heading">Students</p>
+            <p className="mix-nav-mobile-heading">Join The Mix</p>
             {studentsMenu.map((item) => (
               <Link
                 key={`mobile-${item.href}`}
@@ -162,7 +190,7 @@ export function NavBar() {
           </div>
 
           <div className="mix-nav-mobile-group">
-            <p className="mix-nav-mobile-heading">About Us</p>
+            <p className="mix-nav-mobile-heading">The Team</p>
             {aboutMenu.map((item) => (
               <Link
                 key={`mobile-${item.href}`}
@@ -181,7 +209,14 @@ export function NavBar() {
               className="mix-nav-mobile-link mix-nav-mobile-link-strong"
               onClick={() => setIsMobileOpen(false)}
             >
-              Contact
+              Connect
+            </Link>
+            <Link
+              href="/press"
+              className="mix-nav-mobile-link mix-nav-mobile-link-strong"
+              onClick={() => setIsMobileOpen(false)}
+            >
+              Press
             </Link>
             <a
               href="https://www.instagram.com/themixnetwork_/reels/"

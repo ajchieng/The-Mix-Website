@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import { HomeIntroTyping } from "@/components/HomeIntroTyping";
+
 const placeholderHeadshots = ["/headshots/person.jpeg", "/headshots/person3.jpg"];
 
 const teamMembers = [
@@ -43,38 +45,42 @@ const teamMembers = [
 
 export default function AboutTeamPage() {
   return (
-    <section className="mix-team-stage px-4 pb-12 pt-10 sm:px-6 lg:px-8 lg:pb-16 lg:pt-14">
-      <div className="mx-auto w-full max-w-6xl">
-        <div className="mix-team-intro reveal">
-          <p className="mix-kicker mb-3">About Us</p>
-          <h1 className="mix-page-title">Our Team</h1>
-          <p className="mix-copy mt-5 mb-0 text-base sm:text-lg">
-            Meet the students shaping The Mix this year.
-          </p>
-        </div>
+    <>
+      <HomeIntroTyping copy="meet the team" ariaLabel="Team page introduction" />
 
-        <div className="mix-team-grid reveal reveal-delay-1 mt-8" aria-label="Team profiles">
-          {teamMembers.map((member, index) => (
-            <article key={member.name} className="mix-team-member">
-              <div className="mix-team-headshot-wrap">
-                <Image
-                  src={placeholderHeadshots[index % placeholderHeadshots.length]}
-                  alt={`${member.name} headshot`}
-                  fill
-                  sizes="(min-width: 1200px) 28rem, (min-width: 768px) 46vw, 84vw"
-                  className="mix-team-headshot"
-                />
-              </div>
+      <section className="mix-team-stage px-4 pb-12 pt-10 sm:px-6 lg:px-8 lg:pb-16 lg:pt-14">
+        <div className="mx-auto w-full max-w-6xl">
+          <div className="mix-team-intro reveal">
+            <p className="mix-kicker mb-3">About Us</p>
+            <h1 className="mix-page-title">Our Team</h1>
+            <p className="mix-copy mt-5 mb-0 text-base sm:text-lg">
+              Meet the students shaping The Mix this year.
+            </p>
+          </div>
 
-              <div className="mix-team-copy">
-                <p className="mix-team-role">{member.role}</p>
-                <h2 className="mix-card-title">{member.name}</h2>
-                <p className="mix-copy mt-3 mb-0">{member.bio}</p>
-              </div>
-            </article>
-          ))}
+          <div className="mix-team-grid reveal reveal-delay-1 mt-8" aria-label="Team profiles">
+            {teamMembers.map((member, index) => (
+              <article key={member.name} className="mix-team-member">
+                <div className="mix-team-headshot-wrap">
+                  <Image
+                    src={placeholderHeadshots[index % placeholderHeadshots.length]}
+                    alt={`${member.name} headshot`}
+                    fill
+                    sizes="(min-width: 1200px) 28rem, (min-width: 768px) 46vw, 84vw"
+                    className="mix-team-headshot"
+                  />
+                </div>
+
+                <div className="mix-team-copy">
+                  <p className="mix-team-role">{member.role}</p>
+                  <h2 className="mix-card-title">{member.name}</h2>
+                  <p className="mix-copy mt-3 mb-0">{member.bio}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

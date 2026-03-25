@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
+import { HomeIntroTyping } from "@/components/HomeIntroTyping";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { pillars, upcomingMoments } from "@/lib/site";
 
@@ -23,9 +24,11 @@ const eventHighlightImages = [
 export default function HomePage() {
   return (
     <>
+      <HomeIntroTyping />
+
       <section className="mix-hero-stage">
         <div className="mix-hero-overlay px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto flex min-h-full w-full max-w-6xl flex-col justify-between py-5 sm:py-8 lg:py-10">
+          <div className="mix-hero-shell mx-auto flex min-h-full w-full max-w-6xl flex-col justify-between py-5 sm:py-8 lg:py-10">
             <ScrollReveal className="mix-hero-main" variant="up">
               <p className="mix-kicker mix-kicker-light mb-4">Harvard + Berklee Music Industry Network</p>
               <h1 className="mix-hero-title">
@@ -135,7 +138,7 @@ export default function HomePage() {
       </section>
 
       <section className="mix-image-break px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto w-full max-w-6xl">
+        <div className="mix-image-break-inner mx-auto w-full max-w-6xl">
           <ScrollReveal variant="left">
             <p className="mix-kicker mb-2">From Our Last Event</p>
             <h2 className="mix-section-title">OFF THE RECORD</h2>
@@ -159,8 +162,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="px-4 pt-10 pb-10 sm:px-6 sm:pt-12 lg:px-8 lg:pt-14 lg:pb-14">
-        <div className="mx-auto w-full max-w-6xl">
+      <section className="mix-home-moments-stage px-4 pt-10 pb-10 sm:px-6 sm:pt-12 lg:px-8 lg:pt-14 lg:pb-14">
+        <div className="mix-home-moments-inner mx-auto w-full max-w-6xl">
           <ScrollReveal variant="left">
             <p className="mix-kicker mb-2">Calendar</p>
             <h2 className="mix-section-title">Upcoming Moments</h2>
