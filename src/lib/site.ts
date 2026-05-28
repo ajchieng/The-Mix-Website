@@ -23,23 +23,11 @@ export const pillars = [
   },
 ];
 
-export const upcomingMoments = [
-  {
-    title: "Spring A&R Showcase",
-    detail: "Student-led performance night + industry feedback circle.",
-    date: "April 2026",
-  },
-  {
-    title: "Music Business Intensive",
-    detail: "Weekend workshop on rights, publishing, and release strategy.",
-    date: "May 2026",
-  },
-  {
-    title: "Founder x Producer Mixer",
-    detail: "Cross-campus networking between artists and startup founders.",
-    date: "September 2026",
-  },
-];
+export const upcomingMoments: Array<{
+  title: string;
+  detail: string;
+  date: string;
+}> = [];
 
 export const partnerBenefits = [
   "Access to high-potential student talent across performance, production, and strategy.",

@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 
+import { createSupabaseAdminClient } from "@/lib/supabase/server";
+
 type MailingListPayload = {
   school?: string;
   email?: string;
@@ -39,15 +41,35 @@ export async function POST(request: Request) {
       );
     }
 
-    console.log("[mailing-list-submission]", {
-      school,
-      email,
-      message,
-      submittedAt: new Date().toISOString(),
-    });
+    const supabase = createSupabaseAdminClient();
+
+    const { error } = await supabase
+      .from("mailing_list_submissions")
+      .upsert(
+        {
+          school,
+          email,
+          message,
+          updated_at: new Date().toISOString(),
+        },
+        {
+          onConflict: "email",
+        },
+      );
+
+    if (error) {
+      console.error("[mailing-list-submission-error]", error);
+
+      return NextResponse.json(
+        { error: "Unable to submit right now. Please try again." },
+        { status: 500 },
+      );
+    }
 
     return NextResponse.json({ ok: true });
-  } catch {
+  } catch (error) {
+    console.error("[mailing-list-submission-exception]", error);
+
     return NextResponse.json(
       { error: "Something went wrong. Please try again." },
       { status: 500 },

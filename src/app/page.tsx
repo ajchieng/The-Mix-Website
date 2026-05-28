@@ -32,7 +32,7 @@ export default function HomePage() {
             <ScrollReveal className="mix-hero-main" variant="up">
               <p className="mix-kicker mix-kicker-light mb-4">Harvard + Berklee Music Industry Network</p>
               <h1 className="mix-hero-title">
-                Build music projects with people who ship.
+                One network. Endless sound.
               </h1>
               <p className="mix-hero-copy mt-5 mb-0 text-base sm:text-lg">
                 The Mix helps students create momentum through practical programming,
@@ -170,19 +170,31 @@ export default function HomePage() {
           </ScrollReveal>
 
           <div className="mt-6 grid gap-3.5">
-            {upcomingMoments.map((item, index) => (
-              <ScrollReveal key={item.title} delay={index * 120} variant="up">
-                <article className="mix-surface mix-event-card p-5 sm:p-6">
-                  <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                    <div>
-                      <h3 className="mix-card-title">{item.title}</h3>
-                      <p className="mix-copy mt-2 mb-0">{item.detail}</p>
+            {upcomingMoments.length > 0 ? (
+              upcomingMoments.map((item, index) => (
+                <ScrollReveal key={item.title} delay={index * 120} variant="up">
+                  <article className="mix-surface mix-event-card p-5 sm:p-6">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                      <div>
+                        <h3 className="mix-card-title">{item.title}</h3>
+                        <p className="mix-copy mt-2 mb-0">{item.detail}</p>
+                      </div>
+                      <p className="mix-kicker mix-date-chip mt-1 whitespace-nowrap">{item.date}</p>
                     </div>
-                    <p className="mix-kicker mix-date-chip mt-1 whitespace-nowrap">{item.date}</p>
-                  </div>
+                  </article>
+                </ScrollReveal>
+              ))
+            ) : (
+              <ScrollReveal variant="up">
+                <article className="mix-surface mix-event-card p-5 sm:p-6">
+                  <p className="mix-kicker mb-3">No events posted yet</p>
+                  <h3 className="mix-card-title">Stay tuned for upcoming events.</h3>
+                  <p className="mix-copy mt-2 mb-0">
+                    We are planning the next Mix calendar now. Check back soon for new dates.
+                  </p>
                 </article>
               </ScrollReveal>
-            ))}
+            )}
           </div>
         </div>
       </section>

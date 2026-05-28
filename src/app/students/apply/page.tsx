@@ -41,13 +41,6 @@ export default function StudentsApplyPage() {
               </li>
             </ol>
           </article>
-
-          <div className="mix-apply-contact reveal reveal-delay-1 mt-6 p-5 sm:p-6">
-            <p className="mix-copy m-0">
-              To apply, email <a className="mix-contact-link" href="mailto:themix@harvard.edu">themix@harvard.edu</a> with
-              your concentration, current projects, and why you want to join.
-            </p>
-          </div>
         </div>
       </section>
     </>
